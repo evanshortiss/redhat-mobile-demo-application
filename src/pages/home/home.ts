@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
+import { LoginPage } from '../login/login';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +9,15 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private app: App, private auth: AuthService) {
 
+  }
+
+  signout () {
+    this.auth.logout()
+      .then(() => {
+        this.app.getRootNav().setRoot(LoginPage)
+      })
   }
 
 }

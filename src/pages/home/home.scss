@@ -1,3 +1,10 @@
 page-home {
-
+  .item ion-thumbnail {
+    min-width: 10vw;
+    min-height: 10vw;
+    img {
+      max-height: 10vw;
+      max-width: 10vw;
+    }
+  }
 }

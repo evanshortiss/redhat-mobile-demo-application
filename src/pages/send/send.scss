@@ -1,0 +1,13 @@
+page-send {
+  ion-input[name="amount"] input {
+    text-align: right;
+  }
+
+  ion-label {
+    opacity: 0.75;
+  }
+
+  ion-select {
+    max-width: 70%;
+  }
+}

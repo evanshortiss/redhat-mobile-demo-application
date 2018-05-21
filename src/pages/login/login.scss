@@ -1,0 +1,31 @@
+page-login {
+  div.header-image {
+    height: 32vh;
+    background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .footer .toolbar {
+    padding: 1em;
+  }
+
+  ion-item.remember {
+    margin: auto;
+    width: 50vw;
+    border: 0;
+
+    div.item-inner {
+      border: 0 !important;
+    }
+  }
+
+  form {
+    position: relative;
+    top: 5%;
+  }
+
+  button {
+    max-width: 60vw;
+    margin: 1em auto !important;
+  }
+}

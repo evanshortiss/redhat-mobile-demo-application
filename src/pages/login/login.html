@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title>
+      AcmeBank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div [style.background-image]="backgroundImage" class="header-image"></div>
+  <form padding (ngSubmit)="doLogin()">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input (input)="onChange()" type="email" [(ngModel)]="email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input (input)="onChange()" type="password" [(ngModel)]="password" name="password"></ion-input>
+    </ion-item>
+    <ion-item class="remember">
+      <ion-label style="color: gray"><small>Stay Logged In</small></ion-label>
+      <ion-checkbox (click)="onPersistChange()" [(ngModel)]="persistentLogin" name="persist-login"></ion-checkbox>
+    </ion-item>
+    <button [disabled]="!loginEnabled" ion-button type="submit" block>SIGN IN</button>
+  </form>
+
+
+  <ion-footer>
+    <ion-toolbar>
+      <small style="float:right;">© 2018 Acmebank Corporation</small>
+      <small style="float:left;">NA Member FDIC</small>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-content>

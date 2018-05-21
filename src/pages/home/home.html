@@ -1,17 +1,55 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Accounts</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="signout()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-card>
+    <ion-card-header>
+      Hi Shadowman!
+    </ion-card-header>
+
+    <ion-card-content>
+      Tip of the day: Check out social media accounts to keep up to date with acmebank news.
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-thumbnail width="50px" item-start>
+          <img src="assets/imgs/icon-cash.png" alt="checking">
+        </ion-thumbnail>
+        <h2>3030 - Checking</h2>
+        <h1>$4,423</h1>
+        <p>2 new transactions</p>
+        <button ion-button clear item-end>View</button>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/icon-piggy-bank.png" alt="saving">
+        </ion-thumbnail>
+        <h2>8181 - Savings</h2>
+        <h1>$12,050</h1>
+        <p>5 new deposits</p>
+        <button ion-button clear item-end>View</button>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/icon-credit-card.png" alt="visa">
+        </ion-thumbnail>
+        <h2>2701 - Visa Credit</h2>
+        <h1>$1,285</h1>
+        <p>12 new transactions</p>
+        <button ion-button clear item-end>View</button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

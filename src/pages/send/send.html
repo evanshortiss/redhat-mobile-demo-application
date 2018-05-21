@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Send
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="signout()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form (ngSubmit)="doSend()">
+      <ion-item>
+        <ion-label><small>From Account</small></ion-label>
+        <ion-select name="from" [(ngModel)]="from">
+          <ion-option value="Checking">Checking</ion-option>
+          <ion-option value="Savings">Savings</ion-option>
+          <ion-option value="Credit">Credit</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label><small>Recipient</small></ion-label>
+        <ion-select name="from" [(ngModel)]="recipient">
+          <ion-option value="Ann Accountant">Ann Accountant</ion-option>
+          <ion-option value="Bob de Banker">Bob de Banker</ion-option>
+          <ion-option value="Cathy Credit">Cathy Credit</ion-option>
+          <ion-option value="Maggie Manager">Maggie Manager</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label><small>Amount</small></ion-label>
+        <ion-input type="number" [(ngModel)]="amount" name="amount"></ion-input>
+      </ion-item>
+
+      <br/>
+      <br/>
+
+      <button icon-right ion-button type="submit" block>
+        Send
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </form>
+</ion-content>

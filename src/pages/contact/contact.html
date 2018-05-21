@@ -1,17 +1,30 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
       Contact
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="signout()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+    <ion-list-header>Follow us on social media</ion-list-header>
     <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+      <ion-icon name="logo-twitter" item-start></ion-icon>
+      <a target="_system" href="https://twitter.com/acmebank">twitter.com/acmebank</a>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-facebook" item-start></ion-icon>
+      <a target="_system" href="https://facebook.com/acmebank">facebook.com/acmebank-us</a>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-vimeo" item-start></ion-icon>
+      <a target="_system" href="https://vimeo.com/acmebank">vimeo.com/acmebank-us</a>
     </ion-item>
   </ion-list>
 </ion-content>
