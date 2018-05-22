@@ -10,10 +10,10 @@ checks using AeroGear to an application.
 1. Node.js v6.11+
 2. npm 5.6+
 3. Ionic CLI v3.20.0 (npm install -g ionic@3.20)
-3. Android/iOS SDK & Tools
+4. Android/iOS SDK & Tools
+5. Minishift with [Mobile Core Addon](https://github.com/aerogear/minishift-mobilecore-addon)
 
 ## Running the Application
-
 Install dependencies first via `npm i`.
 
 ### Browser
@@ -119,13 +119,6 @@ declare var require: any
 // Initialise the mobile services SDK
 let appConfig = require('../mobile-services.json');
 init(appConfig);
-
-platform.ready().then(() => {
-  // Okay, so the platform is ready and our plugins are available.
-  // Here you can do any higher level native things you might need.
-  statusBar.styleDefault();
-  splashScreen.hide();
-});
 ```
 
 7. In `login.ts` add the following snippets:
