@@ -7,21 +7,57 @@ checks using AeroGear to an application.
 
 ## Requirements
 
-1. Node.js v6.11`+
+1. Node.js v6.11+
 2. npm 5.6+
+3. Ionic CLI v3.20.0 (npm install -g ionic@3.20)
 3. Android/iOS SDK & Tools
+
+## Running the Application
+
+Install dependencies first via `npm i`.
+
+### Browser
+`npm run ionic:serve`
+
+### Android Emulator
+`ionic cordova emulate android`
+
+### iOS Simulator
+`ionic cordova emulate ios`
+
 
 ## Steps to Enforce Security
 1. Provision the Metrics service on OpenShift into a new or existing project
 2. Create an Android/iOS Application in OpenShift and use `com.redhat.acmebank`
 as the package name.
 3. Bind the Application and Metrics service then copy the resulting
-configuration to the `src` folder here and name it `mobile-services.json`
+configuration to the `src` folder here and name it `mobile-services.json`. It
+should look something like this:
+
+```json
+{
+  "version": 1,
+  "clusterName": "https://192.168.64.23:8443",
+  "namespace": "acmebank",
+  "clientId": "myapp-android",
+  "services": [
+    {
+      "id": "metrics",
+      "name": "metrics",
+      "type": "metrics",
+      "url": "https://aerogear-app-metrics-acmebank.192.168.64.23.nip.io/metrics",
+      "config": {}
+    }
+  ]
+}
+
+```
+
 4. Add the following AeroGear modules/plugins to this project:
-  1. `npx ionic cordova plugin add @aerogear/cordova-plugin-aerogear-security --save`
-  2. `npx ionic cordova plugin add @aerogear/cordova-plugin-aerogear-metrics --save`
-  3. `npm install @aerogear/app --save`
-  4. `npm install @aerogear/security --save`
+    1. `ionic cordova plugin add @aerogear/cordova-plugin-aerogear-security --save`
+    2. `ionic cordova plugin add @aerogear/cordova-plugin-aerogear-metrics --save`
+    3. `npm install @aerogear/app --save`
+    4. `npm install @aerogear/security --save`
 5. Create a `src/services/security.ts` file and paste the following content:
 
 ```ts
@@ -93,9 +129,9 @@ platform.ready().then(() => {
 ```
 
 7. In `login.ts` add the following snippets:
-  1. `import { DeviceSecurity } from '../../services/security'`
-  2. `private sec: DeviceSecurity` to the constructor
-  3. `ionViewDidEnter() {}` to the class
+    1. `import { DeviceSecurity } from '../../services/security'`
+    2. `private sec: DeviceSecurity` to the constructor
+    3. `ionViewDidEnter() {}` to the class
 
 8. Add the following code in the `ionViewDidEnter()` function you created:
 
@@ -135,15 +171,11 @@ this.sec.isDeviceLockEnabled()
 ```
 
 10. Finally update `app.module.ts` by adding:
-  1. `import { DeviceSecurity } from '../services/security';` at the top
-  2. `DeviceSecurity` to the `providers` Array in the `@NgModule` block
+    1. `import { DeviceSecurity } from '../services/security';` at the top
+    2. `DeviceSecurity` to the `providers` Array in the `@NgModule` block
 
 ## Icon Credits
 Icons made by [Roundicons](https://www.flaticon.com/authors/roundicons) from 
-[www.flaticon.com](https://www.flaticon.com/) are licensed by
-[CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
-
-Icons made by [Freepik](http://www.freepik.com) from 
 [www.flaticon.com](https://www.flaticon.com/) are licensed by
 [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
 
