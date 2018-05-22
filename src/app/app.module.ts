@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { SignOut } from '../components/signout/signout';
 import { AuthService } from '../services/auth-service';
+import { DeviceSecurity } from '../services/security';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AuthService } from '../services/auth-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    AuthService,
+    DeviceSecurity
   ]
 })
 export class AppModule {}

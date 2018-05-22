@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { AuthService } from '../../services/auth-service';
+import { DeviceSecurity } from '../../services/security'
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginPage {
   public persistentLogin: boolean
   public backgroundImage: string
 
-  constructor(private auth: AuthService, private navCtrl: NavController, private alertCtrl: AlertController) {
+  constructor(private auth: AuthService, private navCtrl: NavController, private alertCtrl: AlertController, private sec: DeviceSecurity) {
     this.email = localStorage.getItem('banking.username')
     this.password = ''
     this.loginEnabled = false
@@ -32,8 +33,21 @@ export class LoginPage {
   }
 
   public onPersistChange() {
-    // Implement custom logic in response to box being checked
-    console.log('persistent changed')
+    this.sec.isDeviceLockEnabled()
+      .then((lockEnabled) => {
+        if (!lockEnabled) {
+          let alert = this.alertCtrl.create({
+            title: 'Device Lock Required',
+            subTitle: 'To enable the "Stay Logged In" you must have set a device lock. Update your device security settings and try again.',
+            buttons: ['OK']
+          });
+
+          alert.present();
+
+          // Don't allow the checkbox to be checked
+          this.persistentLogin = false
+        }
+      })
   }
 
   public onChange () {
@@ -42,6 +56,21 @@ export class LoginPage {
     } else {
       this.loginEnabled = false
     }
+  }
+
+  ionViewDidEnter() {
+    this.sec.isRooted()
+      .then((rooted) => {
+        if (rooted) {
+          let alert = this.alertCtrl.create({
+            title: 'Insecure Device',
+            subTitle: 'We detected that this device is rooted. Running as root increases the likelihood of your device being compromised by malicious software that is designed to steal passwords and financial information. Continued use of this application is at your own risk.',
+            buttons: ['OK']
+          });
+
+          alert.present();
+        }
+      })
   }
 
   doLogin () {
