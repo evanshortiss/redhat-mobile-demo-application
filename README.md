@@ -1,7 +1,7 @@
 ## Work in Progress
 This repository is a work in progress.
 
-## Device Security in 5 Minutes Demo
+## Demo - Device Security in Minutes
 This application can be used to demonstrate how easy it is to add self-defense
 checks using AeroGear to an application.
 
